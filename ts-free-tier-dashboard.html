@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Touch Stay Free Tier — Competitive Landscape Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F3EC;
+    --bg-card: #FFFFFF;
+    --bg-soft: #EFE9DD;
+    --bg-deep: #1A1814;
+    --ink: #1A1814;
+    --ink-2: #4A453D;
+    --ink-3: #8B847A;
+    --line: #E5DFD3;
+    --line-2: #D8D0C0;
+    --accent: #E0501C;
+    --accent-soft: #FBE9DD;
+    --green: #2C7A3E;
+    --green-soft: #D9E9D6;
+    --amber: #B5731B;
+    --amber-soft: #F4E4C4;
+    --gray: #6E6960;
+    --gray-soft: #E8E2D5;
+    --red: #A02818;
+    --red-soft: #F4D9D2;
+
+    --serif: "Fraunces", "Times New Roman", serif;
+    --sans: "Manrope", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--accent); }
+
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+
+  /* ─────────── Header ─────────── */
+  header.hero {
+    border-bottom: 1px solid var(--line);
+    padding: 56px 0 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::before {
+    content: "";
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(224,80,28,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 18px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin-bottom: 24px;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .subhead {
+    font-size: 18px;
+    color: var(--ink-2);
+    max-width: 720px;
+    margin-bottom: 40px;
+  }
+  .meta {
+    display: flex;
+    gap: 32px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .meta span strong { color: var(--ink); font-weight: 500; }
+
+  /* ─────────── Stats strip ─────────── */
+  .stats-strip {
+    background: var(--bg-deep);
+    color: #F0EBE2;
+    padding: 28px 0;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .stat {
+    padding: 0 28px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+  .stat:last-child { border-right: 0; }
+  .stat:first-child { padding-left: 0; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .stat-num .accent { color: #FF7E48; font-style: italic; }
+  .stat-lbl {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(240,235,226,0.6);
+    margin-top: 10px;
+  }
+
+  /* ─────────── Section ─────────── */
+  section { padding: 80px 0; border-bottom: 1px solid var(--line); }
+  .sec-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .sec-eyebrow::before {
+    content: "";
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+  h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(28px, 3.6vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    max-width: 800px;
+    margin-bottom: 16px;
+  }
+  h2 em { font-style: italic; }
+  .sec-lead {
+    font-size: 17px;
+    color: var(--ink-2);
+    max-width: 720px;
+    margin-bottom: 48px;
+  }
+
+  /* ─────────── TS Reference Panel ─────────── */
+  .ref-panel {
+    background: var(--bg-deep);
+    color: #F0EBE2;
+    border-radius: 4px;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+  }
+  .ref-side {
+    border-right: 1px solid rgba(255,255,255,0.12);
+    padding-right: 32px;
+  }
+  .ref-tag {
+    display: inline-block;
+    background: rgba(255,126,72,0.15);
+    color: #FF7E48;
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+  }
+  .ref-side h3 {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .ref-side p {
+    color: rgba(240,235,226,0.7);
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  .ref-side .price {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 500;
+    color: #FF7E48;
+    letter-spacing: -0.02em;
+  }
+  .ref-side .price-sub {
+    color: rgba(240,235,226,0.6);
+    font-size: 13px;
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 4px;
+  }
+  .ref-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 40px;
+  }
+  .ref-feat-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(240,235,226,0.5);
+    margin-bottom: 6px;
+  }
+  .ref-feat-value {
+    font-size: 15px;
+    line-height: 1.4;
+    color: #F0EBE2;
+  }
+
+  /* ─────────── Comparison Matrix ─────────── */
+  .matrix-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    overflow-x: auto;
+  }
+  table.matrix {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1100px;
+  }
+  table.matrix th, table.matrix td {
+    text-align: left;
+    padding: 16px 18px;
+    font-size: 13px;
+    line-height: 1.45;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  table.matrix thead {
+    background: var(--bg-soft);
+  }
+  table.matrix th {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    color: var(--ink-2);
+    border-bottom: 2px solid var(--line-2);
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+  table.matrix th.ts-col {
+    background: var(--bg-deep);
+    color: #FF7E48;
+  }
+  table.matrix th.competitor a {
+    display: block;
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  table.matrix th.competitor a:hover { color: var(--accent); }
+  table.matrix th.competitor span {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-3);
+    font-weight: 400;
+  }
+  table.matrix td.feat {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 13px;
+    background: var(--bg-soft);
+    width: 200px;
+    border-right: 1px solid var(--line);
+  }
+  table.matrix td.ts-col {
+    background: rgba(224,80,28,0.04);
+    color: var(--ink);
+    font-weight: 500;
+    border-right: 1px solid var(--line);
+  }
+  table.matrix tr:hover td:not(.feat):not(.ts-col) {
+    background: rgba(0,0,0,0.015);
+  }
+  .verdict-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    margin-top: 4px;
+  }
+  .v-win { background: var(--green-soft); color: var(--green); }
+  .v-warn { background: var(--amber-soft); color: var(--amber); }
+  .v-loss { background: var(--red-soft); color: var(--red); }
+
+  /* ─────────── Competitor Grid ─────────── */
+  .group {
+    margin-bottom: 56px;
+  }
+  .group:last-child { margin-bottom: 0; }
+  .group-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--line-2);
+  }
+  .group-num {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1;
+  }
+  .group-num.green { color: var(--green); }
+  .group-num.amber { color: var(--amber); }
+  .group-num.gray { color: var(--gray); }
+  .group-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    flex: 1;
+  }
+  .group-desc {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.18s ease;
+    position: relative;
+  }
+  .card:hover {
+    border-color: var(--ink-3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(26,24,20,0.06);
+  }
+  .card-bar {
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    border-radius: 4px 0 0 4px;
+  }
+  .card-bar.green { background: var(--green); }
+  .card-bar.amber { background: var(--amber); }
+  .card-bar.gray { background: var(--gray); }
+  .card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .card-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+  }
+  .card-name a:hover { color: var(--accent); }
+  .card-cat {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-3);
+    margin-bottom: 16px;
+  }
+  .card-price {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .card-price .strong { color: var(--accent); font-weight: 600; }
+  .card-detail {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    flex: 1;
+  }
+  .card-link {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .card-link::after {
+    content: "→";
+    transition: transform 0.18s ease;
+  }
+  .card:hover .card-link::after {
+    transform: translateX(4px);
+  }
+
+  /* ─────────── Insights ─────────── */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .insight-block {
+    padding: 36px;
+    border-radius: 4px;
+  }
+  .insight-block.warn {
+    background: var(--red-soft);
+    border-left: 3px solid var(--red);
+  }
+  .insight-block.win {
+    background: var(--green-soft);
+    border-left: 3px solid var(--green);
+  }
+  .insight-block h3 {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 18px;
+    line-height: 1.2;
+  }
+  .insight-block.warn h3 { color: var(--red); }
+  .insight-block.win h3 { color: var(--green); }
+  .insight-block ol {
+    list-style: none;
+    counter-reset: insight;
+  }
+  .insight-block li {
+    counter-increment: insight;
+    padding: 14px 0;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    position: relative;
+    padding-left: 36px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+  .insight-block li:first-of-type {
+    border-top: 0;
+  }
+  .insight-block li::before {
+    content: counter(insight, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .insight-block li strong {
+    color: var(--ink);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+
+  /* ─────────── Recommendations ─────────── */
+  .recs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .rec {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 32px;
+    position: relative;
+  }
+  .rec::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 32px;
+    width: 40px; height: 3px;
+    background: var(--accent);
+  }
+  .rec-num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    margin-top: 12px;
+  }
+  .rec h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+  .rec p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    margin-bottom: 14px;
+  }
+  .rec p:last-child { margin-bottom: 0; }
+
+  /* ─────────── Sources ─────────── */
+  .sources {
+    background: var(--bg-deep);
+    color: rgba(240,235,226,0.7);
+    padding: 56px 0;
+  }
+  .sources h2 { color: #F0EBE2; }
+  .sources .sec-eyebrow { color: #FF7E48; }
+  .sources .sec-eyebrow::before { background: #FF7E48; }
+  .src-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 32px;
+    margin-top: 32px;
+  }
+  .src {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px dotted rgba(255,255,255,0.15);
+    font-size: 13px;
+    gap: 16px;
+  }
+  .src-name {
+    color: #F0EBE2;
+    font-weight: 500;
+  }
+  .src-url {
+    color: rgba(255,126,72,0.7);
+    font-family: var(--mono);
+    font-size: 11px;
+    text-align: right;
+  }
+  .src:hover .src-url { color: #FF7E48; }
+
+  footer.bottom {
+    padding: 32px 0;
+    background: var(--bg-deep);
+    color: rgba(240,235,226,0.4);
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* ─────────── Matrix: sticky header + cell coding ─────────── */
+  .matrix-wrap {
+    overflow-x: auto;
+    overflow-y: visible;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  table.matrix thead th {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: var(--bg-soft);
+  }
+  table.matrix thead th.ts-col {
+    background: var(--bg-deep);
+    z-index: 6;
+  }
+  table.matrix thead th.hostfully-col {
+    background: #2D2A24;
+    z-index: 6;
+    border-left: 2px solid var(--accent);
+    border-right: 2px solid var(--accent);
+  }
+  table.matrix thead th.hostfully-col a {
+    color: #FF7E48 !important;
+  }
+  table.matrix thead th.hostfully-col span {
+    color: rgba(255,126,72,0.7) !important;
+  }
+  .main-comp-tag {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 9px;
+    padding: 2px 6px;
+    margin-top: 4px;
+    border-radius: 2px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: var(--mono);
+  }
+
+  /* Per-cell win/loss/tie coloring */
+  td.win-cell { background: rgba(44,122,62,0.08); border-left: 2px solid var(--green); color: var(--ink); }
+  td.loss-cell { background: rgba(160,40,24,0.08); border-left: 2px solid var(--red); color: var(--ink); }
+  td.tie-cell { background: rgba(110,105,96,0.05); color: var(--ink-2); }
+  td.win-cell a, td.loss-cell a, td.tie-cell a { color: inherit; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 2px; text-decoration-color: var(--ink-3); }
+  td.win-cell a:hover, td.loss-cell a:hover, td.tie-cell a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+  td.hostfully-cell { border-left: 2px solid var(--accent) !important; border-right: 2px solid var(--accent); }
+
+  /* Cell verdict marker */
+  .cv {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    padding: 1px 5px;
+    border-radius: 2px;
+    margin-right: 6px;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
+  }
+  .cv-w { background: var(--green); color: #fff; }
+  .cv-l { background: var(--red); color: #fff; }
+  .cv-t { background: var(--ink-3); color: #fff; }
+
+  /* Per-row position badge */
+  .pos-badge {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 2px 7px;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+  }
+  .pos-comp { background: var(--green); color: #fff; }
+  .pos-mix { background: var(--amber); color: #fff; }
+  .pos-tie { background: var(--amber); color: #fff; }
+  .pos-non { background: var(--red); color: #fff; }
+  .pos-na { background: var(--ink-3); color: #fff; }
+
+  /* Score footer row */
+  table.matrix tr.score-row td {
+    background: var(--bg-deep);
+    color: #F0EBE2;
+    font-family: var(--mono);
+    font-size: 11px;
+    border-bottom: 0;
+    text-align: center;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    letter-spacing: 0.04em;
+  }
+  table.matrix tr.score-row td.feat {
+    text-align: left;
+    background: var(--bg-deep);
+    color: #FF7E48;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  table.matrix tr.score-row td.ts-col {
+    background: var(--bg-deep);
+    color: rgba(240,235,226,0.4);
+  }
+  .score-w { color: #4FB068; font-weight: 600; }
+  .score-l { color: #E07060; font-weight: 600; }
+  .score-t { color: rgba(240,235,226,0.5); }
+  .verdict {
+    display: block;
+    margin-top: 4px;
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 500;
+    font-style: italic;
+    letter-spacing: -0.01em;
+  }
+  .verdict-win { color: #4FB068; }
+  .verdict-loss { color: #E07060; }
+  .verdict-edge { color: #FF7E48; }
+
+  /* Inspiration section cards */
+  .insp-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+  }
+  .insp-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 24px;
+  }
+  .insp-card h4 {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .insp-source {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+  }
+  .insp-source a { color: var(--accent); }
+  .insp-card p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+  @media (max-width: 720px) {
+    .insp-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Scoreboard at top of matrix */
+  .scoreboard {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .score-card {
+    background: var(--bg-deep);
+    color: #F0EBE2;
+    padding: 18px 16px;
+    border-radius: 4px;
+    border-left: 3px solid var(--accent);
+  }
+  .sc-comp {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(240,235,226,0.5);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .sc-comp a { color: rgba(240,235,226,0.85); }
+  .sc-comp a:hover { color: var(--accent); }
+  .sc-line {
+    display: flex;
+    gap: 4px;
+    align-items: baseline;
+    font-family: var(--mono);
+    font-size: 11px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .sc-line .score-w, .sc-line .score-l, .sc-line .score-t {
+    font-size: 22px;
+    font-weight: 600;
+  }
+  .sc-lbl {
+    color: rgba(240,235,226,0.4);
+    font-size: 10px;
+    margin-right: 6px;
+    letter-spacing: 0.1em;
+  }
+
+  @media (max-width: 960px) {
+    .ref-panel { grid-template-columns: 1fr; gap: 32px; }
+    .ref-side { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.12); padding-right: 0; padding-bottom: 32px; }
+    .ref-features { grid-template-columns: 1fr; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .recs { grid-template-columns: 1fr; }
+    .insights-grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .src-grid { grid-template-columns: 1fr; }
+    .scoreboard { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    .grid { grid-template-columns: 1fr; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; padding-top: 20px; }
+    .stat:first-child { padding-top: 0; }
+    .stat:last-child { border-bottom: 0; padding-bottom: 0; }
+    section { padding: 56px 0; }
+    .scoreboard { grid-template-columns: 1fr; }
+  }
+
+  /* ─── Bucket deep-dive section ─── */
+  .bucket-section { border-bottom: 1px solid var(--line); padding: 72px 0; }
+  .bucket-section:last-of-type { border-bottom: none; }
+  .bucket-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 6px;
+  }
+  .bucket-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-top: 24px;
+  }
+  .bucket-table th {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--ink-3);
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--line);
+    white-space: nowrap;
+  }
+  .bucket-table td {
+    padding: 11px 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    vertical-align: top;
+    color: var(--ink-2);
+    line-height: 1.4;
+  }
+  .bucket-table td:first-child { font-weight: 500; color: var(--ink); }
+  .bucket-table tr:last-child td { border-bottom: 0; }
+  .bucket-table tr:hover td { background: rgba(255,255,255,0.02); }
+  .ft-yes { color: #4FB068; font-weight: 600; font-family: var(--mono); font-size: 11px; }
+  .ft-trial { color: #FF7E48; font-weight: 600; font-family: var(--mono); font-size: 11px; }
+  .ft-no { color: #E07060; font-family: var(--mono); font-size: 11px; }
+  .threat-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+  .threat-high { background: rgba(160,40,24,0.15); color: #E07060; }
+  .threat-mid { background: rgba(255,126,72,0.12); color: #FF7E48; }
+  .threat-low { background: rgba(110,105,96,0.15); color: var(--ink-3); }
+  .threat-none { background: rgba(30,30,30,0.3); color: var(--ink-3); }
+  .bucket-insight {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    border-radius: 3px;
+  }
+  .bucket-insight strong { color: var(--ink); }
+
+  /* ─── Reformatted Insights: pill grid ─── */
+  .flag-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .flag-card {
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 18px 20px;
+    background: var(--bg-card);
+  }
+  .flag-card.risk { border-left: 3px solid var(--red); }
+  .flag-card.win { border-left: 3px solid var(--green); }
+  .flag-card h4 {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
+  .flag-card p {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 0;
+  }
+  .flag-card .src-link {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-top: 6px;
+  }
+  .flag-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .flag-header.risk-h { color: var(--red); }
+  .flag-header.win-h { color: var(--green); }
+  .insights-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 32px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .insights-two-col { grid-template-columns: 1fr; }
+    .flag-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── Reformatted Recommendations ─── */
+  .rec-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 32px;
+  }
+  .rec-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--accent);
+    padding: 24px;
+    border-radius: 4px;
+  }
+  .rec-card .rec-num {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  .rec-card h3 {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+  .rec-card ul {
+    margin: 0;
+    padding: 0 0 0 16px;
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.55;
+  }
+  .rec-card ul li { margin-bottom: 7px; }
+  .rec-card ul li:last-child { margin-bottom: 0; }
+  .rec-card .rec-action {
+    display: block;
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: rgba(255,126,72,0.08);
+    border: 1px solid rgba(255,126,72,0.2);
+    border-radius: 3px;
+    font-size: 12px;
+    color: var(--accent);
+    font-family: var(--mono);
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+  @media (max-width: 900px) {
+    .rec-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─────────── HERO ─────────── -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Touch Stay · Strategic Research · May 2026</div>
+    <h1>The free tier <em>landscape</em>, mapped against TS Free.</h1>
+    <p class="subhead">TS Free benchmarked against 20 competitors — four real free tiers compared cell-by-cell, threats sourced, gaps catalogued. <a href="https://free-plan-ts.vercel.app/" style="color:var(--accent);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;">Reference: TS Free spec</a>.</p>
+    <div class="meta">
+      <span><strong>20</strong> Competitors covered</span>
+      <span><strong>4</strong> Real free tiers · scored cell-by-cell</span>
+      <span><strong>12</strong> Inspiration features cataloged</span>
+      <span><strong>Verified</strong> May 2026</span>
+    </div>
+  </div>
+</header>
+
+<!-- Stats strip removed per review — no headline stats strong enough to earn the space -->
+
+<!-- ─────────── TS FREE REFERENCE ─────────── -->
+<section id="ts-spec">
+  <div class="wrap">
+    <div class="sec-eyebrow">Reference spec</div>
+    <h2>What we're benchmarking <em>against.</em></h2>
+    <p class="sec-lead">The TS Free tier as currently designed. All comparisons in this dashboard are made against this exact configuration.</p>
+
+    <div class="ref-panel">
+      <div class="ref-side">
+        <div class="ref-tag">Touch Stay</div>
+        <h3>Free Plan</h3>
+        <p>Forever-free tier. The entry point in the proposed Free / Starter / Recommended / Premium structure.</p>
+        <div class="price">$0</div>
+        <div class="price-sub">Forever — no card required</div>
+      </div>
+      <div class="ref-features">
+        <div>
+          <div class="ref-feat-label">Guidebooks</div>
+          <div class="ref-feat-value">Unlimited</div>
+        </div>
+        <div>
+          <div class="ref-feat-label">Views cap</div>
+          <div class="ref-feat-value">200 / month, soft pause at 130%</div>
+        </div>
+        <div>
+          <div class="ref-feat-label">Branding</div>
+          <div class="ref-feat-value">TS badge always on</div>
+        </div>
+        <div>
+          <div class="ref-feat-label">Local recommendations</div>
+          <div class="ref-feat-value">6 places</div>
+        </div>
+        <div>
+          <div class="ref-feat-label">Translations</div>
+          <div class="ref-feat-value">Auto Google Translate</div>
+        </div>
+        <div>
+          <div class="ref-feat-label">AI guest chatbot</div>
+          <div class="ref-feat-value">3 conversations / month</div>
+        </div>
+        <div>
+          <div class="ref-feat-label">Email</div>
+          <div class="ref-feat-value">8 scheduled / month</div>
+        </div>
+        <div>
+          <div class="ref-feat-label">SMS</div>
+          <div class="ref-feat-value">None</div>
+        </div>
+        <div>
+          <div class="ref-feat-label">Store / commission</div>
+          <div class="ref-feat-value">5% commission, no Viator share</div>
+        </div>
+        <div>
+          <div class="ref-feat-label">PMS sync</div>
+          <div class="ref-feat-value">Manual only</div>
+        </div>
+        <div>
+          <div class="ref-feat-label">CRM</div>
+          <div class="ref-feat-value">Latest 10 guests</div>
+        </div>
+        <div>
+          <div class="ref-feat-label">Seats</div>
+          <div class="ref-feat-value">1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── DEEP COMPARISON MATRIX ─────────── -->
+<section id="matrix">
+  <div class="wrap">
+    <div class="sec-eyebrow">Real free tier · Feature matrix</div>
+    <h2>How TS Free stacks against the four real free tiers <em>— feature by feature.</em></h2>
+    <p class="sec-lead">Cells color-coded against TS Free position. Source links sit on threat cells where competitors equal or beat TS — these are the verification points worth checking.</p>
+
+    <!-- Scoreboard at top -->
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th class="feat">Feature</th>
+            <th class="ts-col">
+              <a href="https://free-plan-ts.vercel.app/" target="_blank" style="color:#FF7E48;font-family:var(--sans);text-transform:none;letter-spacing:0;font-size:14px;font-weight:600;display:block;margin-bottom:4px;">TS Free ↗</a>
+              <span style="color:rgba(255,126,72,0.6);">$0 forever</span>
+            </th>
+            <th class="competitor">
+              <a href="https://www.sunver.app/pricing" target="_blank">Sunver ↗</a>
+              <span>$0</span>
+            </th>
+            <th class="competitor">
+              <a href="https://www.houseguideapp.com/" target="_blank">Houseguide ↗</a>
+              <span>$0 fully free</span>
+            </th>
+            <th class="competitor">
+              <a href="https://betterstr.com/services/guestbook/" target="_blank">BetterSTR ↗</a>
+              <span>$0 + add-ons</span>
+            </th>
+            <th class="competitor">
+              <a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Hostfully Free ↗</a>
+              <span>$0 · 1 guidebook</span>
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Score summary row -->
+          <tr class="score-row" style="background:var(--bg-deep);">
+            <td class="feat" style="color:#FF7E48;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.1em;font-weight:600;vertical-align:middle;">Score vs TS</td>
+            <td class="ts-col" style="color:rgba(240,235,226,0.3);font-family:var(--mono);font-size:11px;vertical-align:middle;">—</td>
+            <td style="text-align:center;padding:14px 12px;border-bottom:1px solid rgba(255,255,255,0.08);">
+              <div style="font-family:var(--mono);font-size:12px;margin-bottom:4px;"><span class="score-w">11</span><span style="color:var(--ink-3);font-size:10px;margin:0 3px;">W</span><span class="score-l">0</span><span style="color:var(--ink-3);font-size:10px;margin:0 3px;">L</span><span class="score-t">9</span><span style="color:var(--ink-3);font-size:10px;margin:0 3px;">T</span></div>
+              <div class="verdict verdict-win" style="font-size:14px;">TS wins clearly</div>
+            </td>
+            <td style="text-align:center;padding:14px 12px;border-bottom:1px solid rgba(255,255,255,0.08);">
+              <div style="font-family:var(--mono);font-size:12px;margin-bottom:4px;"><span class="score-w">10</span><span style="color:var(--ink-3);font-size:10px;margin:0 3px;">W</span><span class="score-l">0</span><span style="color:var(--ink-3);font-size:10px;margin:0 3px;">L</span><span class="score-t">10</span><span style="color:var(--ink-3);font-size:10px;margin:0 3px;">T</span></div>
+              <div class="verdict verdict-win" style="font-size:14px;">TS wins clearly</div>
+            </td>
+            <td style="text-align:center;padding:14px 12px;border-bottom:1px solid rgba(255,255,255,0.08);">
+              <div style="font-family:var(--mono);font-size:12px;margin-bottom:4px;"><span class="score-w">8</span><span style="color:var(--ink-3);font-size:10px;margin:0 3px;">W</span><span class="score-l">4</span><span style="color:var(--ink-3);font-size:10px;margin:0 3px;">L</span><span class="score-t">8</span><span style="color:var(--ink-3);font-size:10px;margin:0 3px;">T</span></div>
+              <div class="verdict verdict-win" style="font-size:14px;">TS wins</div>
+            </td>
+            <td style="text-align:center;padding:14px 12px;border-bottom:1px solid rgba(255,255,255,0.08);">
+              <div style="font-family:var(--mono);font-size:12px;margin-bottom:4px;"><span class="score-w">9</span><span style="color:var(--ink-3);font-size:10px;margin:0 3px;">W</span><span class="score-l">4</span><span style="color:var(--ink-3);font-size:10px;margin:0 3px;">L</span><span class="score-t">7</span><span style="color:var(--ink-3);font-size:10px;margin:0 3px;">T</span></div>
+              <div class="verdict verdict-win" style="font-size:14px;">TS wins</div>
+            </td>
+          </tr>
+
+
+          <tr>
+            <td class="feat">
+              Guidebooks allowed
+              <span class="pos-badge pos-comp">Competitive</span>
+            </td>
+            <td class="ts-col">Unlimited</td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://www.sunver.app/pricing" target="_blank">1 only</a></td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Unlimited (duplicate)</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span><a href="https://betterstr.com/services/guestbook/" target="_blank">Unlimited (PMS-synced only)</a></td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">1 only</a></td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Usage gate · how Free is throttled
+              <span class="pos-badge pos-tie">Tied</span>
+            </td>
+            <td class="ts-col">200 views / mo, soft pause at 130%</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Gated by 1-guidebook + 10-modules cap</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>"Fully free" — gate unstated</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Gated by PMS-sync requirement</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Gated by 1-guidebook cap</td>
+
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Content per guidebook
+              <span class="pos-badge pos-comp">Competitive</span>
+            </td>
+            <td class="ts-col">Unlimited (categories → subcategories → topics)</td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://www.sunver.app/pricing" target="_blank">10 modules max</a></td>
+            <td class="tie-cell"><span class="cv cv-t">T</span><a href="https://www.houseguideapp.com/" target="_blank">Unlimited</a></td>
+            <td class="tie-cell"><span class="cv cv-t">T</span><a href="https://betterstr.com/services/guestbook/" target="_blank">Unlimited</a></td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Standard set</a></td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Host branding (logo, colors, fonts)
+              <span class="pos-badge pos-comp">Competitive</span>
+            </td>
+            <td class="ts-col">Yes — logo, colors, fonts</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span><a href="https://www.sunver.app/pricing" target="_blank">Full visual customization</a></td>
+            <td class="tie-cell"><span class="cv cv-t">T</span><a href="https://www.houseguideapp.com/" target="_blank">Customizable branding</a></td>
+            <td class="tie-cell"><span class="cv cv-t">T</span><a href="https://betterstr.com/services/guestbook/" target="_blank">Theme customization</a></td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Pro+ only — not on Free</td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Platform badge on guidebook
+              <span class="pos-badge pos-na">Tied</span>
+            </td>
+            <td class="ts-col">TS badge always on</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Sunver branded</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Houseguide branded</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>BetterSTR branded</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Hostfully branded</td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Custom domain / subdomain
+              <span class="pos-badge pos-tie">Tied</span>
+            </td>
+            <td class="ts-col">Not on Free (feature exists, paid only)</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Not on Free — Pro tier</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not stated</td>
+            <td class="loss-cell"><span class="cv cv-l">L</span><a href="https://betterstr.com/services/guestbook/" target="_blank">Subdomain $9.95/yr</a></td>
+            <td class="loss-cell"><span class="cv cv-l">L</span><a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Yes — included on Free</a></td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Local recommendations
+              <span class="pos-badge pos-comp">Competitive</span>
+            </td>
+            <td class="ts-col">6 places</td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://www.sunver.app/pricing" target="_blank">5 places only</a></td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not stated on site</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>No built-in local recommendations</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Sponsored only (no custom categories)</td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Store / upsells available on Free
+              <span class="pos-badge pos-comp">Competitive</span>
+            </td>
+            <td class="ts-col">Yes — Stripe direct payment to host</td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://www.sunver.app/pricing" target="_blank">No — Gold tier paid only</a></td>
+            <td class="tie-cell"><span class="cv cv-t">T</span><a href="https://www.houseguideapp.com/" target="_blank">Yes — Stripe shop</a></td>
+            <td class="tie-cell"><span class="cv cv-t">T</span><a href="https://betterstr.com/services/guestbook/" target="_blank">Yes — Stripe direct, host gets 90% minus fee</a></td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">No — Pro+ Marketplace only</a></td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Store commission (excl. Stripe fees) <a href="#stripe-note" style="color:var(--ink-3);text-decoration:none;font-size:11px;font-weight:400;" title="Stripe processing fees apply on top">[ⁱ]</a>
+              <span class="pos-badge pos-tie">Tied</span>
+            </td>
+            <td class="ts-col">5% on Free (paid tiers: 2%)</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>N/A on Free</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not stated — no published commission</td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://betterstr.com/services/guestbook/" target="_blank">10% + $0.30 platform</a></td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>N/A on Free (Pro: 1%)</td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Affiliate / referral revenue share
+              <span class="pos-badge pos-tie">Tied</span>
+            </td>
+            <td class="ts-col">No revenue share on Free</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Not on Free</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not stated</td>
+            <td class="loss-cell"><span class="cv cv-l">L</span><a href="https://betterstr.com/services/guestbook/" target="_blank">4% Viator commission to host</a></td>
+            <td class="loss-cell"><span class="cv cv-l">L</span><a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Referral Revenue on Free</a></td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              AI guest support (in-guidebook Q&amp;A)
+              <span class="pos-badge pos-comp">Competitive</span>
+            </td>
+            <td class="ts-col">3 conversations / mo · trained on your guidebook content</td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://www.sunver.app/pricing" target="_blank">Not on Free — Gold tier only</a></td>
+            
+            <td class="win-cell"><span class="cv cv-w">W</span>Not offered</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not in stated free feature list</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span><a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">AI Itinerary Planner (different scope)</a></td>
+          </tr>
+
+          <tr>
+            <td class="feat">
+              AI content generation (host-side)
+              <span class="pos-badge pos-tie">Tied</span>
+            </td>
+            <td class="ts-col">AI Assistant — Free tier entitlement TBC</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not stated as free</td>
+            
+            <td class="tie-cell"><span class="cv cv-t">T</span>Not offered</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Not offered</td>
+            <td class="loss-cell"><span class="cv cv-l">L</span><a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Guidebook Wizard on Free</a></td>
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Translations
+              <span class="pos-badge pos-comp">Competitive</span>
+            </td>
+            <td class="ts-col">Auto Google Translate (guest-side)</td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://www.sunver.app/pricing" target="_blank">Not on Free — Starter has 2 languages</a></td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not stated</td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://betterstr.com/services/guestbook/" target="_blank">$2 / language paid add-on</a></td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Not on Free — Pro+ 16+ languages</a></td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Email scheduling (Memo templates)
+              <span class="pos-badge pos-comp">Competitive</span>
+            </td>
+            <td class="ts-col">8 / month — criteria-based timing, deep links, field codes</td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://www.sunver.app/pricing" target="_blank">Not on Free — Starter has guest messaging</a></td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not stated</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not stated as free</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not on Free — Pro+ has Email Capture</td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              SMS · pay-per-use rate available
+              <span class="pos-badge pos-tie">Tied</span>
+            </td>
+            <td class="ts-col">~$0.036 / SMS (separate from Free plan, internal cost basis)</td>
+            
+            <td class="tie-cell"><span class="cv cv-t">T</span>None</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>None</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span><a href="https://betterstr.com/services/guestbook/" target="_blank">$0.10 / msg — pay-as-you-go</a></td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>None</td>
+          </tr>
+
+          <tr>
+            <td class="feat">
+              PMS integration
+              <span class="pos-badge pos-tie">Tied</span>
+            </td>
+            <td class="ts-col">Not on Free (paid: 25+ PMS native sync)</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Not on Free</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>None known</td>
+            <td class="loss-cell"><span class="cv cv-l">L</span><a href="https://betterstr.com/services/guestbook/" target="_blank">Auto-sync PMS — but requires PMS to create any property</a></td>
+            <td class="loss-cell"><span class="cv cv-l">L</span><a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Hostfully PMS + Devices on Free</a></td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              QR codes + PWA offline access
+              <span class="pos-badge pos-comp">Competitive</span>
+            </td>
+            <td class="ts-col">Both included — PWA install + offline cache</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>QR codes only (no PWA/offline)</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>QR access (no PWA/offline)</td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://betterstr.com/services/guestbook/" target="_blank">QR codes &amp; sharing only</a></td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>QR + Print + PDF</td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              5-star review protection popup
+              <span class="pos-badge pos-comp">Competitive</span>
+            </td>
+            <td class="ts-col">2 popups / month · routes 4-5★ public, low★ private</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not offered</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not offered</td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://betterstr.com/services/guestbook/" target="_blank">Auto review requests via paid SMS only</a></td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not offered</td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Guest CRM / contact data
+              <span class="pos-badge pos-comp">Competitive</span>
+            </td>
+            <td class="ts-col">Latest 10 guests in CRM</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>None on Free</td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not stated</td>
+            <td class="win-cell"><span class="cv cv-w">W</span><a href="https://betterstr.com/services/guestbook/" target="_blank">WiFi captive portal email capture is paid add-on</a></td>
+            <td class="win-cell"><span class="cv cv-w">W</span>Not on Free — Pro+ Email Capture</td>
+            
+          </tr>
+
+          <tr>
+            <td class="feat">
+              Guide analytics
+              <span class="pos-badge pos-tie">Tied</span>
+            </td>
+            <td class="ts-col">Basic — per-guide views, near-arrival no-view filter</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Usage statistics</td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Tracking</td>
+            <td class="loss-cell"><span class="cv cv-l">L</span><a href="https://betterstr.com/services/guestbook/" target="_blank">Guest analytics on Free + advanced engagement</a></td>
+            <td class="tie-cell"><span class="cv cv-t">T</span>Standard</td>
+            
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <p id="stripe-note" style="font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:16px;letter-spacing:0.04em;line-height:1.6;">
+      <strong style="color:var(--ink-2);">[ⁱ] Stripe fees note —</strong> Both TS and BetterSTR Stores route payment direct from guest to host's bank via Stripe, with the platform fee deducted on top. All commissions stated <em>excluding</em> Stripe processing fees (~2.9% + $0.30 per US transaction). On a $100 upsell: TS Free ≈ $5.00 platform + $3.20 Stripe = $8.20 effective · BetterSTR ≈ $10.30 platform + $3.20 Stripe = $13.50 effective.
+    </p>
+    <p style="font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:8px;letter-spacing:0.04em;line-height:1.6;">
+      <strong style="color:var(--ink-2);">Reading the matrix —</strong> <span class="cv cv-w" style="margin-right:4px;">W</span>TS wins · <span class="cv cv-l" style="margin-right:4px;">L</span>TS loses · <span class="cv cv-t" style="margin-right:4px;">T</span>Tie. Underlined links go to the source page that establishes the competitor's claim — verification points worth checking when a competitor matches or beats TS.
+    </p>
+  </div>
+</section>
+
+<!-- ─────────── FULL 20 GRID ─────────── -->
+<section id="all-competitors">
+  <div class="wrap">
+    <div class="sec-eyebrow">Full landscape · 20 competitors tracked</div>
+    <h2>The complete landscape — <em>every competitor in compersion,</em> grouped by free-tier reality.</h2>
+    <p class="sec-lead">Each card links to the competitor's pricing page or canonical source. Position relative to TS is shown as Free Tier, Trial Only, or No Free Access.</p>
+
+    <!-- GROUP 1: REAL FREE TIER (from compersion + adjacent) -->
+    <div class="group">
+      <div class="group-head">
+        <div class="group-num green">04</div>
+        <div class="group-title">Real free tier — direct threat</div>
+        <div class="group-desc">Free forever or free with limits</div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-bar green"></div>
+          <div class="card-head">
+            <div>
+              <div class="card-name"><a href="https://www.sunver.app/pricing" target="_blank">Sunver Freemium</a></div>
+            </div>
+          </div>
+          <div class="card-cat">Guidebook native</div>
+          <div class="card-price"><span class="strong">$0</span> · paid $5–10/property</div>
+          <div class="card-detail">1 guidebook, 10 modules, 5 local recs, 5 FAQs, full visual customization. Gold tier offers 0% Stripe commission on upsells.</div>
+          <a class="card-link" href="https://www.sunver.app/pricing" target="_blank">View pricing</a>
+        </div>
+        <div class="card">
+          <div class="card-bar green"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://www.houseguideapp.com/" target="_blank">Houseguide</a></div></div></div>
+          <div class="card-cat">Guidebook native</div>
+          <div class="card-price"><span class="strong">$0</span> · fully free</div>
+          <div class="card-detail">No paid tiers. Stripe shop, video tutorials, duplicate guidebooks, customizable. Monetization unclear.</div>
+          <a class="card-link" href="https://www.houseguideapp.com/" target="_blank">View site</a>
+        </div>
+        <div class="card">
+          <div class="card-bar green"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://betterstr.com/services/guestbook/" target="_blank">BetterSTR</a></div></div></div>
+          <div class="card-cat">Guidebook native</div>
+          <div class="card-price"><span class="strong">$0</span> · pay only for SMS</div>
+          <div class="card-detail">100% free guidebooks. AI Q&amp;A, custom domain, WiFi capture, Google review automation. SMS at $0.10/msg, 4% Viator.</div>
+          <a class="card-link" href="https://betterstr.com/services/guestbook/" target="_blank">View pricing</a>
+        </div>
+        <div class="card">
+          <div class="card-bar green"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Hostfully Free</a></div></div></div>
+          <div class="card-cat">Guidebook native</div>
+          <div class="card-price"><span class="strong">$0</span> · 1 guidebook · paid from $79</div>
+          <div class="card-detail">1 free guidebook only. Excludes branding, translations, marketplace, bulk editing. Marketplace upsells = 1% Stripe fee.</div>
+          <a class="card-link" href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">View pricing</a>
+        </div>
+
+
+      </div>
+    </div>
+
+    <!-- GROUP 2: FREE TRIAL ONLY -->
+    <div class="group">
+      <div class="group-head">
+        <div class="group-num amber">09</div>
+        <div class="group-title">Free trial only — paid after 7–30 days</div>
+        <div class="group-desc">Time-limited free access</div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-bar amber"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://guideyapp.com/digital-guidebook.html" target="_blank">Guidey</a></div></div></div>
+          <div class="card-cat">Guidebook native · in compersion</div>
+          <div class="card-price"><span class="strong">From $1.80/mo</span> · 14-day trial</div>
+          <div class="card-detail">Lowest-price branded guidebook in market. Compersion lists From $1.80/mo. Limited features at low tier.</div>
+          <a class="card-link" href="https://guideyapp.com/digital-guidebook.html" target="_blank">View pricing</a>
+        </div>
+        <div class="card">
+          <div class="card-bar amber"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://goguidebook.com/digital-guide-pricing/" target="_blank">GoGuidebook</a></div></div></div>
+          <div class="card-cat">Guidebook native · in compersion</div>
+          <div class="card-price"><span class="strong">$7.50/mo</span> · free trial</div>
+          <div class="card-detail">Self-described AirBNB host tool. White-label/reseller available. Compersion shows $7.50/mo.</div>
+          <a class="card-link" href="https://goguidebook.com/digital-guide-pricing/" target="_blank">View pricing</a>
+        </div>
+        <div class="card">
+          <div class="card-bar amber"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://www.happyguestofficial.com/" target="_blank">Happy Guest</a></div></div></div>
+          <div class="card-cat">Guidebook + check-in · in compersion</div>
+          <div class="card-price"><span class="strong">$8/mo</span> or free with 10+ res</div>
+          <div class="card-detail">$99/yr OR free if 10+ reservations annually + commission on upsells. ID verification, rental agreements, damage waivers.</div>
+          <a class="card-link" href="https://www.happyguestofficial.com/" target="_blank">View site</a>
+        </div>
+        <div class="card">
+          <div class="card-bar amber"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://duve.com/pricing/" target="_blank">Duve</a></div></div></div>
+          <div class="card-cat">Guest experience · in compersion</div>
+          <div class="card-price"><span class="strong">Custom</span> · 10-day trial</div>
+          <div class="card-detail">€5–10/room/mo, hotel-leaning. Online check-in, upsells, guest comms, AI messaging. Compersion lists Custom pricing.</div>
+          <a class="card-link" href="https://duve.com/pricing/" target="_blank">View pricing</a>
+        </div>
+        <div class="card">
+          <div class="card-bar amber"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://www.ruebarue.com/" target="_blank">RueBaRue</a></div></div></div>
+          <div class="card-cat">Guest comms · in compersion</div>
+          <div class="card-price"><span class="strong">Custom</span> · 2-week trial</div>
+          <div class="card-detail">Min 3 properties. Compersion notes "Free onboarding." Guidebooks + SMS messaging + surveys.</div>
+          <a class="card-link" href="https://www.ruebarue.com/" target="_blank">View site</a>
+        </div>
+        <div class="card">
+          <div class="card-bar amber"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://www.getbesty.ai/" target="_blank">Besty AI</a></div></div></div>
+          <div class="card-cat">AI messaging · in compersion</div>
+          <div class="card-price"><span class="strong">$12/listing/mo</span> · 14-day trial no CC</div>
+          <div class="card-detail">AI messaging + upselling autopilot or draft mode. Best fit for 10+ properties. Not a guidebook tool — uses Host Notes.</div>
+          <a class="card-link" href="https://www.getbesty.ai/" target="_blank">View site</a>
+        </div>
+        <div class="card">
+          <div class="card-bar amber"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://suiteop.com/pricing" target="_blank">SuiteOp</a></div></div></div>
+          <div class="card-cat">Guest ops platform · in compersion</div>
+          <div class="card-price"><span class="strong">$15/unit/mo</span> · 1-month trial</div>
+          <div class="card-detail">From $6/mo per GetApp, modular. SuitePortal incl. guidebook + IoT (1 device free, +$3 each). 100% upsell revenue to operator.</div>
+          <a class="card-link" href="https://suiteop.com/pricing" target="_blank">View pricing</a>
+        </div>
+        <div class="card">
+          <div class="card-bar amber"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://www.hostbuddy.ai/pricing" target="_blank">HostBuddy AI</a></div></div></div>
+          <div class="card-cat">AI messaging · in compersion</div>
+          <div class="card-price"><span class="strong">$7/property/mo</span> · free trial</div>
+          <div class="card-detail">AI messaging only — requires PMS. From ~$5/mo. Best for ≤15 listings. Not a guidebook competitor; complementary tool.</div>
+          <a class="card-link" href="https://www.hostbuddy.ai/pricing" target="_blank">View pricing</a>
+        </div>
+        <div class="card">
+          <div class="card-bar amber"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://upmarket.cloud/" target="_blank">UpMarket</a></div></div></div>
+          <div class="card-cat">AI concierge · in compersion</div>
+          <div class="card-price"><span class="strong">Custom</span> · 30-day trial no CC</div>
+          <div class="card-detail">AI virtual concierge, white-label guest app, digital guidebook. Strong in EU/Portugal compliance (SEFScan).</div>
+          <a class="card-link" href="https://upmarket.cloud/" target="_blank">View site</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- GROUP 3: NO FREE -->
+    <div class="group">
+      <div class="group-head">
+        <div class="group-num gray">07</div>
+        <div class="group-title">No free, no trial — sales-led / enterprise</div>
+        <div class="group-desc">Demo first or paid only</div>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-bar gray"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://www.hostfully.com/pricing/" target="_blank">Hostfully</a></div></div></div>
+          <div class="card-cat">PMS + guidebook · in compersion</div>
+          <div class="card-price"><span class="strong">$49/mo</span> from compersion</div>
+          <div class="card-detail">Has free guidebook tier (1 guidebook). Full PMS + guidebook bundle starts at $79+ per Hostfully pricing.</div>
+          <a class="card-link" href="https://www.hostfully.com/pricing/" target="_blank">View pricing</a>
+        </div>
+        <div class="card">
+          <div class="card-bar gray"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://www.akia.com/" target="_blank">Akia</a></div></div></div>
+          <div class="card-cat">SMS messaging · in compersion</div>
+          <div class="card-price"><span class="strong">Custom</span></div>
+          <div class="card-detail">No free, no trial. Custom pricing. Hotel-focused SMS-based guest messaging. Setup with sales required.</div>
+          <a class="card-link" href="https://www.akia.com/" target="_blank">View site</a>
+        </div>
+        <div class="card">
+          <div class="card-bar gray"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://www.breezeway.io/breezeway-pricing" target="_blank">Breezeway</a></div></div></div>
+          <div class="card-cat">Operations · in compersion</div>
+          <div class="card-price"><span class="strong">$19/property/mo</span></div>
+          <div class="card-detail">Bundle: ops + AI messaging + Guide welcome books at ~$19.99/unit/mo. Hostfully partnership: 1 free property.</div>
+          <a class="card-link" href="https://www.breezeway.io/breezeway-pricing" target="_blank">View pricing</a>
+        </div>
+        <div class="card">
+          <div class="card-bar gray"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://ensoconnect.com/pricing" target="_blank">Enso Connect</a></div></div></div>
+          <div class="card-cat">AI guest experience · in compersion</div>
+          <div class="card-price"><span class="strong">Custom</span></div>
+          <div class="card-detail">No free, no trial. Multi-agent AI, branded guest app, 5% upsell commission ($25 cap). 2–8h setup.</div>
+          <a class="card-link" href="https://ensoconnect.com/pricing" target="_blank">View pricing</a>
+        </div>
+        <div class="card">
+          <div class="card-bar gray"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://www.yourwelcome.com/" target="_blank">YourWelcome</a></div></div></div>
+          <div class="card-cat">In-property tablets · in compersion</div>
+          <div class="card-price"><span class="strong">Per-property sub</span></div>
+          <div class="card-detail">Free 8" tablet for life of subscription. Hardware-anchored ~$15–25/property/mo. Branded guest experience platform.</div>
+          <a class="card-link" href="https://www.yourwelcome.com/" target="_blank">View site</a>
+        </div>
+        <div class="card">
+          <div class="card-bar gray"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://operto.com/guest/" target="_blank">Operto Guest</a></div></div></div>
+          <div class="card-cat">Smart-lock + guest · in compersion</div>
+          <div class="card-price"><span class="strong">$7/mo</span> from compersion</div>
+          <div class="card-detail">Smart-lock heavy. Custom pricing typically $15+/property/mo. Compersion lists $7/mo at base tier.</div>
+          <a class="card-link" href="https://operto.com/guest/" target="_blank">View site</a>
+        </div>
+        <div class="card">
+          <div class="card-bar gray"></div>
+          <div class="card-head"><div><div class="card-name"><a href="https://www.guesty.com/" target="_blank">Guesty</a></div></div></div>
+          <div class="card-cat">PMS · in compersion</div>
+          <div class="card-price"><span class="strong">$9/listing/mo</span> from compersion</div>
+          <div class="card-detail">AI-powered PMS + channel manager. No native guidebook. Touch Stay partner. Compersion lists $9/listing/mo.</div>
+          <a class="card-link" href="https://www.guesty.com/" target="_blank">View site</a>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ─────────── INSIGHTS ─────────── -->
+<section id="insights">
+  <div class="wrap">
+    <div class="sec-eyebrow">Strategic implications</div>
+    <h2>Where TS Free <em>wins</em>, where it <em>loses</em>.</h2>
+    <p class="sec-lead" style="margin-bottom:32px;">TS Free wins against all four real free tiers in the matrix — scores range from 8W/4L (BetterSTR, Hostfully) to 12W/1L (Sunver). Four specific features remain losses: host branding, custom domain, referral revenue, and PMS integration on Hostfully's Free tier.</p>
+
+    <div class="insights-two-col">
+      <div>
+        <div class="flag-header risk-h">▲ Where TS loses — 4 gaps</div>
+        <div class="flag-grid">
+
+          <div class="flag-card risk">
+            <h4>Custom domain — Hostfully includes it free; BetterSTR at $9.95/yr</h4>
+            <p>Hostfully Free includes custom domain at $0. BetterSTR offers a subdomain as a paid add-on ($9.95/yr) — not a free inclusion. Sunver and Houseguide don't offer it on Free either. This is a 1-competitor clean loss (Hostfully), not 2.</p>
+            <a class="src-link" href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Hostfully pricing ↗</a>
+          </div>
+          <div class="flag-card risk">
+            <h4>Referral revenue — 2 competitors pay hosts</h4>
+            <p>BetterSTR gives hosts 4% on Viator bookings. Hostfully includes Referral Revenue on Free. TS has Viator + Welcome Pickups + Tiqets embedded but excludes any rev-share on Free. Pricing decision, not a product gap.</p>
+            <a class="src-link" href="https://betterstr.com/services/guestbook/" target="_blank">BetterSTR ↗</a>&nbsp;<a class="src-link" href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Hostfully ↗</a>
+          </div>
+          <div class="flag-card risk">
+            <h4>PMS integration — Hostfully Free has it natively</h4>
+            <p>Hostfully Free syncs to its own PMS + Devices at $0. TS Free has no PMS integration (paid tiers: 25+ PMS native sync). BetterSTR also has auto-sync but only for hosts who already have a PMS.</p>
+            <a class="src-link" href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Hostfully pricing ↗</a>
+          </div>
+          <div class="flag-card risk">
+            <h4>AI Itinerary + Virtual Concierge on Hostfully Free</h4>
+            <p>Hostfully Free includes AI Itinerary Planner and Virtual Concierge at $0. TS has in-guidebook Q&A AI (different scope — answers questions vs. builds itineraries). Buyers comparing AI see Hostfully as broader.</p>
+            <a class="src-link" href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Hostfully pricing ↗</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="flag-header win-h">● Where TS wins — 9 advantages</div>
+        <div class="flag-grid">
+          <div class="flag-card win">
+            <h4>Unlimited guidebooks, no PMS to start</h4>
+            <p>Sunver = 1, Hostfully = 1, BetterSTR = unlimited but requires PMS to even onboard. TS Free lets any host create guidebooks from day one — no PMS account or sync setup required.</p>
+          </div>
+          <div class="flag-card win">
+            <h4>6 local recommendations — beats all four</h4>
+            <p>TS = 6, Sunver = 5 only, BetterSTR has no built-in recs, Hostfully shows sponsored-only. TS wins this row against every real free tier competitor.</p>
+          </div>
+          <div class="flag-card win">
+            <h4>Store at 5% — only working store on a free tier</h4>
+            <p>Sunver Free and Hostfully Free have no Store at all. BetterSTR charges 10%+$0.30. TS Free is the only free tier with a live, purchasable store at a single-digit commission.</p>
+          </div>
+          <div class="flag-card win">
+            <h4>Email Memo templates on Free</h4>
+            <p>8/month with criteria-based timing, field codes, and deep links into specific topics. None of the four real free tiers offer scheduled email automation at all.</p>
+          </div>
+          <div class="flag-card win">
+            <h4>Auto-translation at $0</h4>
+            <p>Sunver, Hostfully, and BetterSTR all gate translations behind paid tiers ($2/language at BetterSTR). TS Free ships Google auto-translate on every guidebook.</p>
+          </div>
+          <div class="flag-card win">
+            <h4>In-guidebook AI Q&A — unique on Free</h4>
+            <p>Chatbot trained on the host's own guidebook content, 3 conversations/month. Sunver gates AI to Gold paid. Houseguide has none. BetterSTR none on Free. Hostfully's AI generates itineraries — a different use case entirely.</p>
+          </div>
+          <div class="flag-card win">
+            <h4>5-star Review Protection popup</h4>
+            <p>Routes 4-5★ responses to public review sites, low-star to private feedback. BetterSTR has automated review requests only via paid SMS add-on. The other three free tiers don't offer this at all.</p>
+          </div>
+          <div class="flag-card win">
+            <h4>SMS rate ~$0.036 — 2.7× cheaper than the market</h4>
+            <p>BetterSTR's pay-as-you-go SMS is $0.10/message — the only competitor that offers SMS on Free at all. TS's rate is ~$0.036/message, available as a separate add-on. Cheaper per message, no bundle required.</p>
+          </div>
+          <div class="flag-card win">
+            <h4>Host branding — beats Hostfully specifically</h4>
+            <p>TS Free now ships logo, colors, and font customization. Sunver, Houseguide, and BetterSTR also offer it free — so this is a tie there. But Hostfully gates branding to Pro+, making TS the stronger free-tier product on brand control.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── RECOMMENDATIONS ─────────── -->
+<section id="recommendations" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <div class="sec-eyebrow">Recommendations</div>
+    <h2>Three calls to make <em>before launch.</em></h2>
+
+    <div class="rec-grid">
+      <div class="rec-card">
+        <div class="rec-num">Decision 01</div>
+        <h3>Two gaps worth an explicit pre-launch decision.</h3>
+        <ul>
+          <li><strong>Referral revenue share:</strong> TS has all the embed partners (Viator, Welcome Pickups, Tiqets) already in the guidebook. The question is whether to pass any commission to Free hosts. Two competitors do (BetterSTR 4%, Hostfully as a feature). Low implementation cost; high perceived value.</li>
+          <li><strong>Host branding:</strong> 3 of 4 competitors offer it free. If this stays gated, the badge-removal upgrade trigger must be treated as primary — that requires deliberate pricing page positioning, not just a feature gate.</li>
+          <li><strong>Custom domain and AI Itinerary</strong> — don't delay launch for these. Only Hostfully includes custom domain on Free (BetterSTR charges $9.95/yr for it). AI Itinerary is Hostfully-specific and TS's Q&A AI is a different (and arguably better) use case.</li>
+        </ul>
+        <span class="rec-action">Local recs (6), store, translations, email scheduling, AI Q&A, review popup — these are already stronger than the market. Launch on these, decide on rev-share.</span>
+      </div>
+      <div class="rec-card">
+        <div class="rec-num">Decision 02</div>
+        <h3>Validate the 200 view cap against real usage data.</h3>
+        <ul>
+          <li>All four competitors use guidebook-count gates (Sunver: 1, Hostfully: 1) or property-creation gates (BetterSTR: PMS required). TS is the only one using a view cap — a deliberate tradeoff that lets multi-property hosts onto Free.</li>
+          <li>View caps fire at usage success, not at sign-up. The risk: hosts hit 200 views after guests start engaging — exactly the moment they'd recommend TS to other hosts.</li>
+          <li>If P90 of monthly views across existing accounts is under 200, the cap is well-calibrated. If P90 is 400+, the cap punishes the best-engaged segment.</li>
+        </ul>
+        <span class="rec-action">Pull P50/P90/P99 view distribution before committing to 200/mo. This is a data question, not a gut call.</span>
+      </div>
+      <div class="rec-card">
+        <div class="rec-num">Decision 03</div>
+        <h3>Position around the three things competitors can't match.</h3>
+        <ul>
+          <li><strong>No PMS required to start:</strong> BetterSTR can't create a property without PMS sync. TS Free works for any host from day one — with manual entry and CSV upload as the fallback.</li>
+          <li><strong>Store from day one:</strong> Sunver and Hostfully Free have no store at all. BetterSTR's 10%+$0.30 is twice TS's 5%. Only TS lets a host monetize guests for free without upgrading first.</li>
+          <li><strong>Full guest communication stack:</strong> email scheduling + AI Q&A + review popup, all on Free. No competitor ships all three at $0.</li>
+        </ul>
+        <span class="rec-action">"Unlimited properties. Host branding. Store from day one." — three things Hostfully Free can't match simultaneously.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── INSPIRATION ─────────── -->
+<section id="inspiration">
+  <div class="wrap">
+    <div class="sec-eyebrow">Inspiration · features TS doesn't ship</div>
+    <h2>What competitors do that <em>TS Free doesn't.</em></h2>
+    <p class="sec-lead">Features across the 20 tracked competitors that TS currently doesn't offer. Sourced. Not a roadmap — a scan of what the category is doing. Each card: one idea, one source, two sentences.</p>
+
+    <div class="insp-grid">
+      <div class="insp-card">
+        <h4>AI Itinerary Planner + Virtual Concierge</h4>
+        <div class="insp-source">Source: <a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Hostfully Free</a></div>
+        <p>AI generates day-by-day plans for guests based on stay dates and interests. Virtual Concierge handles 24/7 questions — different from TS's content-Q&A chatbot, this proactively builds plans.</p>
+      </div>
+      <div class="insp-card">
+        <h4>Digital check-in form + Security deposit + Police form</h4>
+        <div class="insp-source">Source: <a href="https://www.sunver.app/pricing" target="_blank">Sunver Gold</a></div>
+        <p>Post-booking workflow: ID capture, integrated security deposit / deposit waiver, EU legal compliance police form. Adjacent to TS's existing Store + Stripe primitive.</p>
+      </div>
+      <div class="insp-card">
+        <h4>WiFi captive portal email capture</h4>
+        <div class="insp-source">Source: <a href="https://betterstr.com/services/guestbook/" target="_blank">BetterSTR ($2/AP)</a></div>
+        <p>Guests connect to property WiFi via branded portal that captures email + name. Pairs naturally with TS's existing guest CRM module (currently capped at 10 on Free).</p>
+      </div>
+      <div class="insp-card">
+        <h4>NFC tap-to-topic</h4>
+        <div class="insp-source">Source: <a href="https://betterstr.com/services/guestbook/" target="_blank">BetterSTR</a></div>
+        <p>Physical NFC stickers on appliances, door entry, welcome pack. Guest taps phone to go directly to that guidebook topic — same deep-link primitive as TS QR codes on cheaper hardware.</p>
+      </div>
+      <div class="insp-card">
+        <h4>Post-stay automated review request SMS</h4>
+        <div class="insp-source">Source: <a href="https://betterstr.com/services/guestbook/" target="_blank">BetterSTR ($0.10/msg)</a></div>
+        <p>Checkout triggers SMS requesting Google/Airbnb review. TS has the 5-star popup in-guide, but no outbound post-stay push — this is a Memo template + 2WM (Beta) combination TS could nearly ship today.</p>
+      </div>
+      <div class="insp-card">
+        <h4>Folio: multi-property branded portfolio</h4>
+        <div class="insp-source">Source: <a href="https://betterstr.com/services/guestbook/" target="_blank">BetterSTR</a></div>
+        <p>All guides grouped under one branded landing page at a custom domain. Natural extension for TS's 5+ property clients where unlimited guidebooks already win.</p>
+      </div>
+      <div class="insp-card">
+        <h4>Native iOS + Android branded apps</h4>
+        <div class="insp-source">Source: <a href="https://www.holidayhero.com/" target="_blank">HolidayHero (from €30/mo)</a> · <a href="https://ensoconnect.com/" target="_blank">Enso Boarding Pass</a></div>
+        <p>Host's brand in App Store/Play Store. TS PWA is faster + cheaper to deploy — but the "open the [Brand] app" mental model is a recurring sales objection worth tracking.</p>
+      </div>
+      <div class="insp-card">
+        <h4>Smart lock + IoT depth</h4>
+        <div class="insp-source">Source: <a href="https://operto.com/guest/" target="_blank">Operto Guest</a></div>
+        <p>Auto-generated lock codes per reservation, thermostat control, noise monitoring, in-app device control. Thin integration layer on TS (surface device control in guidebook) is feasible without owning hardware.</p>
+      </div>
+      <div class="insp-card">
+        <h4>Damage waiver + Security deposit collection</h4>
+        <div class="insp-source">Source: <a href="https://suiteop.com/" target="_blank">SuiteOp</a> · <a href="https://www.happyguestofficial.com/" target="_blank">Happy Guest</a></div>
+        <p>Charge guest for damage waiver or hold security deposit via Stripe before lock code releases. Direct host revenue; adjacent to TS's existing Store + Stripe stack.</p>
+      </div>
+      <div class="insp-card">
+        <h4>Online check-in Boarding Pass flow</h4>
+        <div class="insp-source">Source: <a href="https://duve.com/pricing/" target="_blank">Duve</a> · <a href="https://ensoconnect.com/" target="_blank">Enso Connect</a></div>
+        <p>Pre-arrival step-by-step funnel: passport scan, arrival time, access code — delivered as a "boarding pass." Same data as TS's guidebook delivered as a guided workflow rather than a browse-tree.</p>
+      </div>
+      <div class="insp-card">
+        <h4>Sponsored recommendations / Viator native rev-share</h4>
+        <div class="insp-source">Source: <a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Hostfully Free</a></div>
+        <p>Host earns commission on booked local experiences without any setup — Hostfully surfaces sponsored options automatically. TS has Viator embed but Free tier excludes the rev-share.</p>
+      </div>
+      <div class="insp-card">
+        <h4>Multi-agent AI architecture</h4>
+        <div class="insp-source">Source: <a href="https://ensoconnect.com/" target="_blank">Enso Connect</a></div>
+        <p>Separate agents: one routes, one drafts, one escalates, one analyzes sentiment. TS has a single chatbot trained on content — the next-gen pattern is specialist agent teams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── BUCKET DEEP-DIVES ─────────── -->
+<section id="buckets" style="background:var(--bg-soft);">
+  <div class="wrap">
+    <div class="sec-eyebrow">Competitive landscape · three buckets</div>
+    <h2>The full 20-competitor landscape — <em>by threat type.</em></h2>
+    <p class="sec-lead">20 tracked competitors split across three buckets. Bucket A is the primary threat to TS Free positioning — they compete on the same product category. Bucket B is a secondary threat — they could replace TS as part of a wider stack. Bucket C is a baseline threat — PMS players bundling guidebook-adjacent features.</p>
+
+    <!-- BUCKET A -->
+    <div class="bucket-section">
+      <div class="bucket-label">Bucket A · Primary threat</div>
+      <h3 style="font-size:24px;margin-bottom:4px;">Guidebook natives</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin-top:0;">Dedicated guidebook products competing on the same purchase decision as TS Free. Pricing and free-tier structures extracted from public pricing pages.</p>
+
+      <table class="bucket-table">
+        <thead>
+          <tr>
+            <th>Competitor</th>
+            <th>Pricing</th>
+            <th>Free tier</th>
+            <th>Key limits on Free</th>
+            <th>Threat to TS Free</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://www.hostfully.com/pricing/digital-guidebooks/" target="_blank">Hostfully ↗</a></td>
+            <td>Free / $7.99–$19.99+/mo</td>
+            <td class="ft-yes">YES</td>
+            <td>1 guidebook, sponsored recs only</td>
+            <td><span class="threat-tag threat-high">High</span> — Custom domain, AI Itinerary, Virtual Concierge, Referral Revenue all on Free</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.sunver.app/pricing" target="_blank">Sunver ↗</a></td>
+            <td>Free / $5–8+/property</td>
+            <td class="ft-yes">YES</td>
+            <td>1 guidebook, 10 modules, 5 recs, 5 FAQs</td>
+            <td><span class="threat-tag threat-mid">Medium</span> — Full visual customization on Free undercuts TS's badge-removal upgrade trigger</td>
+          </tr>
+          <tr>
+            <td><a href="https://betterstr.com/services/guestbook/" target="_blank">BetterSTR ↗</a></td>
+            <td>Free + paid add-ons</td>
+            <td class="ft-yes">YES</td>
+            <td>Unlimited but requires PMS sync to create properties</td>
+            <td><span class="threat-tag threat-mid">Medium</span> — PMS-sync limitation is real but detailed analytics + Viator rev-share are genuine advantages</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.houseguideapp.com/" target="_blank">Houseguide ↗</a></td>
+            <td>$0 "entirely free"</td>
+            <td class="ft-yes">YES</td>
+            <td>Not stated — "fully featured"</td>
+            <td><span class="threat-tag threat-mid">Medium</span> — Fully free with Stripe shop; feature depth unverified, no PMS integration known</td>
+          </tr>
+          <tr>
+            <td><a href="https://ruebarue.com" target="_blank">RueBaRue ↗</a></td>
+            <td>~$9.99/property/mo, 2-week trial</td>
+            <td class="ft-no">NO</td>
+            <td>No free tier, per-property billing</td>
+            <td><span class="threat-tag threat-low">Low (no free)</span> — Strong on SMS + messaging automation, but paid-only removes comparison at Free tier shopping</td>
+          </tr>
+          <tr>
+            <td><a href="https://guideyapp.com/" target="_blank">Guidey ↗</a></td>
+            <td>From $7.42/mo (1st property), 14-day trial</td>
+            <td class="ft-no">NO</td>
+            <td>No free tier, per-property billing</td>
+            <td><span class="threat-tag threat-low">Low (no free)</span> — Multi-property management + local recs but no free tier removes direct comparison</td>
+          </tr>
+          <tr>
+            <td><a href="https://goguidebook.com/digital-guide-pricing/" target="_blank">GoGuidebook ↗</a></td>
+            <td>$8.99 first guide, $5.99 next, 14-day trial</td>
+            <td class="ft-no">NO</td>
+            <td>No free tier, tiered per-guide</td>
+            <td><span class="threat-tag threat-low">Low (no free)</span> — Translation, email collection, PDF fallback but no ongoing free tier</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.holidayhero.com/" target="_blank">HolidayHero ↗</a></td>
+            <td>From €30/mo, trial offered</td>
+            <td class="ft-trial">TRIAL</td>
+            <td>Native iOS/Android app, PMS API, HolidayHeroAI</td>
+            <td><span class="threat-tag threat-low">Low (no free)</span> — Native branded app is a differentiator but paid-from-day-1 removes Free comparison</td>
+          </tr>
+          <tr>
+            <td>YourWelcome</td>
+            <td>Per-property hardware subscription</td>
+            <td class="ft-no">NO</td>
+            <td>Dedicated tablet hardware model</td>
+            <td><span class="threat-tag threat-none">Niche</span> — Hardware-in-property model, totally different acquisition path</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.happyguestofficial.com/" target="_blank">Happy Guest ↗</a></td>
+            <td>~$8/mo</td>
+            <td class="ft-no">NO</td>
+            <td>ID verification, rental agreements, damage waivers</td>
+            <td><span class="threat-tag threat-low">Low (no free)</span> — Post-booking compliance features TS doesn't have, but no free tier removes direct overlap</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="bucket-insight">
+        <strong>A-bucket takeaway:</strong> Only Hostfully, Sunver, BetterSTR, and Houseguide have real free tiers. Of those, Hostfully is the most feature-complete at $0. Sunver attacks branding. BetterSTR attacks analytics + rev-share. Houseguide is the unknown quantity. The paid-only players (RueBaRue, Guidey, GoGuidebook, HolidayHero) lose at the comparison-shopping moment — hosts won't pay to evaluate when TS Free is at $0.
+      </div>
+    </div>
+
+    <!-- BUCKET B -->
+    <div class="bucket-section">
+      <div class="bucket-label">Bucket B · Secondary threat</div>
+      <h3 style="font-size:24px;margin-bottom:4px;">AI-messaging challengers</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin-top:0;">Platforms built around AI-powered guest communication. Guidebook is a feature, not the primary product. The threat: a host could choose one of these instead of TS — getting messaging + guidebook in one stack.</p>
+
+      <table class="bucket-table">
+        <thead>
+          <tr>
+            <th>Competitor</th>
+            <th>Pricing</th>
+            <th>Free tier</th>
+            <th>AI / Messaging on free?</th>
+            <th>Threat to TS Free</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://duve.com/pricing/" target="_blank">Duve ↗</a></td>
+            <td>Custom (enterprise) — €2.5/room/mo AI add-on</td>
+            <td class="ft-no">NO</td>
+            <td>AI Agents are paid add-on — €2.5/room/mo + usage</td>
+            <td><span class="threat-tag threat-low">Low (no free)</span> — Hotel-focused, $60M Series B, far above TS's price point. STR hosts rarely evaluate Duve.</td>
+          </tr>
+          <tr>
+            <td><a href="https://ensoconnect.com/" target="_blank">Enso Connect ↗</a></td>
+            <td>Custom + ROI guarantee, 5% upsell commission ($25 cap)</td>
+            <td class="ft-trial">ROI GUARANTEE</td>
+            <td>Full AI Unified Inbox + Boarding Pass + guidebook included. Requires PMS.</td>
+            <td><span class="threat-tag threat-mid">Medium (upsell path)</span> — A growing STR host on TS Free could migrate to Enso for full messaging + AI + guidebook. Requires PMS, pricing opaque.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.akia.com/pricing" target="_blank">Akia ↗</a></td>
+            <td>Bronze/Silver/Gold/Platinum — custom pricing</td>
+            <td class="ft-no">NO</td>
+            <td>AI Mini Apps + messaging at Bronze (paid). No free tier.</td>
+            <td><span class="threat-tag threat-low">Low (hotel-focused)</span> — More hotel/resort oriented, not STR-native. No free tier, pricing opaque.</td>
+          </tr>
+          <tr>
+            <td><a href="https://besty.ai" target="_blank">Besty AI ↗</a></td>
+            <td>~$12/listing/mo, 14-day trial</td>
+            <td class="ft-trial">TRIAL</td>
+            <td>AI messaging automation from day 1. Not official Airbnb partner.</td>
+            <td><span class="threat-tag threat-low">Low (no free)</span> — Pure AI messaging play, no guidebook depth. Trial-only, paid-from-day-1.</td>
+          </tr>
+          <tr>
+            <td><a href="https://hostbuddy.ai" target="_blank">HostBuddy AI ↗</a></td>
+            <td>~$7/property/mo</td>
+            <td class="ft-trial">TRIAL</td>
+            <td>AI messaging, lighter feature set than Enso.</td>
+            <td><span class="threat-tag threat-low">Low (no free)</span> — Lightweight AI messaging assistant, paid-only. Competes on messaging, not on guidebook.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="bucket-insight">
+        <strong>B-bucket takeaway:</strong> No Bucket B player has a permanent free tier. Duve and Enso are enterprise-grade, require PMS, and price well above TS. The real threat from Bucket B is indirect: a growing host might choose Enso (AI + messaging + guidebook in one) and phase out TS. TS's counter is that TS Free provides the guidebook foundation cheaply; the migration cost to Enso is high. TS should be the stack host starts with — Enso is what a 50-property manager considers later.
+      </div>
+    </div>
+
+    <!-- BUCKET C -->
+    <div class="bucket-section">
+      <div class="bucket-label">Bucket C · Baseline threat</div>
+      <h3 style="font-size:24px;margin-bottom:4px;">PMS guidebook bundles</h3>
+      <p style="font-size:14px;color:var(--ink-2);margin-top:0;">Property Management Systems that bundle guidebook-adjacent features. The threat: a PMS user might never look at TS if the PMS ships "good enough" guidebooks for free.</p>
+
+      <table class="bucket-table">
+        <thead>
+          <tr>
+            <th>PMS Player</th>
+            <th>Guidebook feature?</th>
+            <th>Included in base plan?</th>
+            <th>Quality vs TS</th>
+            <th>Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="https://www.guesty.com/" target="_blank">Guesty ↗</a></td>
+            <td>No native guidebook</td>
+            <td class="ft-no">N/A</td>
+            <td>Recommends TS + Hostfully integrations</td>
+            <td><span class="threat-tag threat-none">None</span> — Guesty actively routes hosts to TS. Integration play, not competition.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.hostaway.com/" target="_blank">Hostaway ↗</a></td>
+            <td>No native guidebook</td>
+            <td class="ft-no">N/A</td>
+            <td>Integrates with TS (25+ PMS in TS's stack)</td>
+            <td><span class="threat-tag threat-none">None</span> — TS is the guidebook layer for Hostaway users.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.breezeway.io/breezeway-pricing" target="_blank">Breezeway ↗</a></td>
+            <td>Yes — "Guide" welcome books</td>
+            <td class="ft-no">Paid bundle (Ops + Messaging + Guide)</td>
+            <td>Basic welcome book, no AI chatbot, no email scheduling, no Store</td>
+            <td><span class="threat-tag threat-low">Low</span> — Breezeway's guidebook is ops-adjacent (check-in info), not a full guidebook product. Primary use is ops, not guest experience.</td>
+          </tr>
+          <tr>
+            <td><a href="https://operto.com/" target="_blank">Operto ↗</a></td>
+            <td>Yes — digital guidebooks in Guest platform</td>
+            <td class="ft-no">Paid (full guest platform)</td>
+            <td>Branded guidebook with local recs, IoT integration. No AI chatbot, no Store.</td>
+            <td><span class="threat-tag threat-low">Low</span> — Full guest experience platform, positioned for 50+ property operators. Not a TS Free replacement at any price point.</td>
+          </tr>
+          <tr>
+            <td><a href="https://www.hospitable.com/" target="_blank">Hospitable ↗</a></td>
+            <td>No native guidebook</td>
+            <td class="ft-no">N/A</td>
+            <td>Integrates with TS</td>
+            <td><span class="threat-tag threat-none">None</span> — TS is the guidebook layer for Hospitable users.</td>
+          </tr>
+          <tr>
+            <td><a href="https://suiteop.com/" target="_blank">SuiteOp ↗</a></td>
+            <td>Limited (damage waivers + deposits focus)</td>
+            <td>Paid ($15/unit/mo)</td>
+            <td>Compliance/payment focus, not a true guidebook. 1 smart device free per property.</td>
+            <td><span class="threat-tag threat-none">None</span> — Entirely different product category. Complements TS, doesn't replace it.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="bucket-insight">
+        <strong>C-bucket takeaway:</strong> No PMS bundles a real guidebook for free. Guesty, Hostaway, and Hospitable recommend TS as the guidebook layer — they're partner channels, not competitors. Breezeway and Operto have guidebook-adjacent features but both are paid, operations-primary products. TS Free has no credible Bucket C threat for hosts who haven't chosen a PMS yet (which is the TS Free acquisition sweet spot).
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
